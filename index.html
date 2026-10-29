@@ -513,6 +513,149 @@
   .fz-yt-play svg{width:22px; height:22px; fill:#fff;}
   .fz-yt-title{position:absolute; left:0; right:0; top:0; padding:12px 14px 26px; font-size:12.5px; color:#fff; background:linear-gradient(180deg,rgba(0,0,0,.7),transparent); pointer-events:none;}
   .fz-yt iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
+
+  /* =====================================================
+     MACROCICLO · réplica interactiva del Excel
+     ===================================================== */
+  #macrociclo{--xl-green:#107c41; --c-int:#156082; --c-vol:#e97132;}
+  .mc-h{margin:38px 0 14px; font-size:18px; letter-spacing:-.01em; display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;}
+  .mc-h small{font-family:var(--mono); font-size:11.5px; color:var(--text-faint); font-weight:400;}
+  .mc-actions{display:flex; gap:10px; flex-wrap:wrap; margin:0 0 22px;}
+  .mc-goal{background:linear-gradient(135deg,rgba(37,99,235,.16),rgba(16,185,129,.10)); border:1px solid var(--line-2); border-radius:14px; padding:20px 22px; margin-bottom:14px;}
+  .mc-goal small{display:block; font-family:var(--mono); font-size:11px; color:var(--text-faint); margin-bottom:8px; letter-spacing:.04em;}
+  .mc-goal p{margin:0; font-size:15.5px; line-height:1.55;}
+  .mc-kpis{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:14px;}
+  @media(max-width:860px){.mc-kpis{grid-template-columns:1fr 1fr;}}
+  .mc-kpi{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px;}
+  .mc-kpi b{display:block; font-family:var(--mono); font-size:30px; letter-spacing:-.03em; line-height:1.1;}
+  .mc-kpi b small{font-size:13px; color:var(--text-dim); font-weight:400; letter-spacing:0; margin-left:4px;}
+  .mc-kpi>span{display:block; font-size:12.5px; color:var(--text-dim); margin-top:4px;}
+  .mc-objs{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:14px;}
+  @media(max-width:860px){.mc-objs{grid-template-columns:1fr;}}
+  .mc-obj{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px 18px; position:relative; overflow:hidden;}
+  .mc-obj i{position:absolute; right:12px; top:-6px; font-style:normal; font-family:var(--mono); font-size:64px; font-weight:700; color:rgba(255,255,255,.05);}
+  .mc-obj small{display:block; font-family:var(--mono); font-size:11px; color:var(--text-faint); margin-bottom:6px;}
+  .mc-obj p{margin:0; font-size:13.5px; color:var(--text-dim); position:relative;}
+  .mc-hitos{display:flex; gap:10px; flex-wrap:wrap;}
+  .mc-hito{border:1px solid var(--line-2); border-radius:999px; padding:8px 14px; font-size:12.5px; color:var(--text-dim);}
+  .mc-hito b{color:var(--text); font-family:var(--mono); margin-left:6px;}
+
+  /* recorrido */
+  .mc-trip{background:linear-gradient(180deg,var(--card),var(--card-2)); border:1px solid var(--line); border-radius:16px; padding:22px;}
+  .mc-tl-top{display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:14px;}
+  .mc-tl-top span{font-size:13px; color:var(--text-dim);}
+  .mc-bands{display:grid; grid-template-columns:repeat(11,1fr); gap:4px; margin-bottom:6px;}
+  .mc-band{font-size:11px; font-family:var(--mono); padding:5px 8px; border-radius:6px; color:#0a0f18; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .mc-band.Y{background:#ffe94d; grid-column:span 3;} .mc-band.G{background:#92d050; grid-column:span 5;} .mc-band.R{background:#ff5a4d; grid-column:span 3;}
+  .mc-slots{display:grid; grid-template-columns:repeat(11,1fr); gap:4px; position:relative;}
+  .mc-slot{all:unset; box-sizing:border-box; cursor:pointer; text-align:center; padding:10px 2px 9px; border-radius:10px; border:2px solid transparent; background:rgba(255,255,255,.04); transition:transform .25s, background .25s, border-color .25s, box-shadow .25s;}
+  .mc-slot b{display:block; font-family:var(--mono); font-size:17px;}
+  .mc-slot em{display:block; font-style:normal; font-size:10px; color:var(--text-faint); margin-top:2px; line-height:1.2;}
+  .mc-slot:hover{background:rgba(255,255,255,.09);}
+  .mc-slot:focus-visible{outline:2px solid var(--blue); outline-offset:2px;}
+  .mc-slot.empty{background:repeating-linear-gradient(135deg,rgba(255,255,255,.03) 0 6px,transparent 6px 12px); opacity:.65;}
+  .mc-slot.on{transform:translateY(-4px) scale(1.06); border-color:var(--sc); background:color-mix(in srgb,var(--sc) 20%,transparent); box-shadow:0 8px 22px color-mix(in srgb,var(--sc) 35%,transparent);}
+  .mc-slot.on em{color:var(--text);}
+  .mc-ficha{display:grid; grid-template-columns:260px 1fr; gap:22px; margin-top:22px; padding-top:20px; border-top:1px solid var(--line);}
+  @media(max-width:860px){.mc-ficha{grid-template-columns:1fr;}}
+  .mc-fh{--sc:#ffe94d;}
+  .mc-fh .big{font-family:var(--mono); font-size:56px; font-weight:700; line-height:1; letter-spacing:-.04em; color:var(--sc);}
+  .mc-fh .big small{font-size:14px; color:var(--text-dim); letter-spacing:0; font-weight:400; margin-left:6px;}
+  .mc-fh h5{margin:10px 0 2px; font-size:15px;}
+  .mc-fh .sub{font-size:13px; color:var(--text-dim);}
+  .mc-badge{display:inline-block; font-family:var(--mono); font-size:11px; padding:4px 10px; border-radius:6px; margin-top:12px; background:color-mix(in srgb,var(--sc) 20%,transparent); color:var(--sc); font-weight:600;}
+  .mc-facts{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:14px;}
+  .mc-facts div{background:rgba(255,255,255,.04); border-radius:9px; padding:9px 11px;}
+  .mc-facts span{display:block; font-size:10.5px; color:var(--text-faint);}
+  .mc-facts b{font-family:var(--mono); font-size:13px;}
+  .mc-fb{display:grid; grid-template-columns:1fr 1fr; gap:16px 22px;}
+  @media(max-width:700px){.mc-fb{grid-template-columns:1fr;}}
+  .mc-grp h6{margin:0 0 8px; font-size:11.5px; font-family:var(--mono); color:var(--text-faint); font-weight:500; letter-spacing:.03em;}
+  .mc-chips{display:flex; flex-wrap:wrap; gap:6px;}
+  .mc-chip{font-size:12px; padding:5px 10px; border-radius:7px; color:#0a0f18; font-weight:600; animation:mcChip .45s both;}
+  .mc-chip.g1{background:#5eead4;} .mc-chip.g2{background:#fcd34d;} .mc-chip.g3{background:#86efac;} .mc-chip.g4{background:#c4b5fd;}
+  .mc-none{font-size:12.5px; color:var(--text-faint);}
+  @keyframes mcChip{from{opacity:0; transform:translateY(8px) scale(.9);} to{opacity:1; transform:none;}}
+  .mc-gauges{grid-column:1/-1; display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:4px;}
+  @media(max-width:860px){.mc-gauges{grid-template-columns:1fr;}}
+  .mc-gauge{background:rgba(255,255,255,.04); border-radius:10px; padding:12px 14px;}
+  .mc-gauge h6{margin:0 0 10px; font-size:12px; color:var(--text); font-weight:600;}
+  .mc-gr{display:grid; grid-template-columns:78px 1fr 18px; gap:8px; align-items:center; font-size:11.5px; color:var(--text-dim); margin:6px 0;}
+  .mc-gr .segs{display:flex; gap:4px;}
+  .mc-gr .segs i{flex:1; height:10px; border-radius:3px; background:rgba(255,255,255,.08); transition:background .4s, transform .4s; transform-origin:bottom;}
+  .mc-gr .segs i.on{background:var(--k); transform:scaleY(1.25);}
+  .mc-gr b{font-family:var(--mono); color:var(--text);}
+  .mc-note{font-size:12px; color:var(--text-faint); margin:12px 0 0;}
+
+  /* ventana de Excel */
+  .mc-jump{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;}
+  .mc-jump button{background:transparent; border:1px solid var(--line-2); color:var(--text-dim); padding:7px 13px; border-radius:8px; font-size:12.5px; cursor:pointer; transition:.15s;}
+  .mc-jump button:hover{color:var(--text); border-color:var(--text-faint);}
+  .xl{background:#fff; border-radius:12px; overflow:hidden; border:1px solid #2b3447; box-shadow:0 18px 50px rgba(0,0,0,.45); color:#1f1f1f; font-family:"Aptos Narrow",Calibri,"Segoe UI",Arial,sans-serif;}
+  .xl-title{background:var(--xl-green); color:#fff; display:flex; align-items:center; gap:10px; padding:8px 14px; font-size:13px; font-family:"Segoe UI",system-ui,sans-serif;}
+  .xl-title svg{width:18px; height:18px; flex:none;}
+  .xl-title span:last-child{margin-left:auto; opacity:.85; font-size:12px;}
+  .xl-fbar{display:flex; align-items:stretch; background:#f3f3f3; border-bottom:1px solid #d4d4d4; font-size:13px;}
+  .xl-name{width:84px; padding:6px 10px; background:#fff; border-right:1px solid #d4d4d4; font-weight:600; text-align:center; flex:none;}
+  .xl-fx{padding:6px 10px; color:#6b6b6b; font-style:italic; font-family:Georgia,serif; border-right:1px solid #d4d4d4; flex:none; background:#fafafa;}
+  .xl-fval{flex:1; padding:6px 12px; background:#fff; min-height:32px; max-height:76px; overflow:auto; line-height:1.4; white-space:pre-wrap;}
+  .xl-scroll{position:relative; overflow:auto; max-height:min(72vh,620px); background:#fff; outline:none;}
+  .xl-scroll:focus-visible{box-shadow:inset 0 0 0 2px var(--xl-green);}
+  .xl-inner{position:relative; width:max-content; min-width:100%;}
+  table.xl-t{width:1218px; border-collapse:separate; border-spacing:0; table-layout:fixed; font-size:12.5px; line-height:1.25;}
+  .xl-t th, .xl-t td{border-right:1px solid #dcdcdc; border-bottom:1px solid #dcdcdc; padding:2px 5px; overflow:hidden; word-wrap:break-word; background-clip:padding-box;}
+  .xl-t td{background:#fff; text-align:left; vertical-align:bottom; white-space:normal; position:relative;}
+  .xl-t thead th{position:sticky; top:0; z-index:6; background:#efefef; color:#444; font-weight:500; font-size:12px; height:26px; cursor:pointer; text-align:center; padding:0;}
+  .xl-t thead th.corner{left:0; z-index:8; cursor:default;}
+  .xl-t th.rh{position:sticky; left:0; z-index:5; background:#efefef; color:#444; font-weight:500; font-size:11.5px; text-align:center; padding:0; width:46px;}
+  .xl-t thead th.ch:hover{background:#dcdcdc;}
+  .xl-t thead th.sel{background:#caead8; color:#0b5a2f; box-shadow:inset 0 -3px 0 var(--xl-green);}
+  .xl-t tr.rsel th.rh{background:#caead8; color:#0b5a2f; box-shadow:inset -3px 0 0 var(--xl-green);}
+  .xl-t td[data-c="1"]{position:sticky; left:46px; z-index:3;}
+  .xl-t td[data-c="2"]{position:sticky; left:174px; z-index:3;}
+  @media(max-width:700px){.xl-t td[data-c="1"], .xl-t td[data-c="2"]{position:relative; left:auto;}}
+  .xl-t td.h-c{text-align:center;} .xl-t td.h-r{text-align:right;} .xl-t td.h-l{text-align:left;}
+  .xl-t td.va-m{vertical-align:middle;} .xl-t td.va-t{vertical-align:top;}
+  .xl-t td.b{font-weight:700;}
+  .xl-t td.f-Y{background:#ffff00;} .xl-t td.f-G{background:#92d050;} .xl-t td.f-R{background:#ff0000;} .xl-t td.f-g{background:#4ea72e;}
+  .xl-t td.f-L{background:#d1d1d1;} .xl-t td.f-S{background:#a6a6a6;}
+  .xl-t td.f-B{background:#156082; color:#fff;} .xl-t td.f-O{background:#e97132; color:#fff;}
+  .xl-t td.bt{box-shadow:inset 0 1px 0 #333;} .xl-t td.bl{box-shadow:inset 1px 0 0 #333;} .xl-t td.bt.bl{box-shadow:inset 0 1px 0 #333, inset 1px 0 0 #333;}
+  .xl-t td.bd{border-right-color:#333; border-bottom-color:#333;}
+  .xl-t td.act{outline:2px solid var(--xl-green); outline-offset:-2px; z-index:4;}
+  .xl-t tr:hover td:not(.act){filter:brightness(.965);}
+  .xl-t td span{display:inline-block;}
+  .xl-t td.xk{font-size:14px;}
+  .xl:not(.go) td.pop span{opacity:0;}
+  .xl.go td.pop span{animation:xlPop .55s cubic-bezier(.2,1.4,.4,1) both; animation-delay:var(--d,0ms);}
+  @keyframes xlPop{0%{opacity:0; transform:scale(.1) rotate(-40deg);} 100%{opacity:1; transform:none;}}
+  .xl:not(.go) tbody tr{opacity:0;}
+  .xl.go tbody tr{animation:xlRow .45s ease both; animation-delay:calc(var(--i,0)*14ms);}
+  @keyframes xlRow{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:none;}}
+  .xl-t tr.flash td{animation:xlFlash 1.5s ease;}
+  @keyframes xlFlash{0%,100%{filter:none;} 25%,60%{filter:brightness(1.18) saturate(1.5); box-shadow:inset 0 0 0 2px #107c41;}}
+  .xl-play{position:absolute; top:0; z-index:2; pointer-events:none; background:rgba(16,124,65,.10); border-left:2px solid var(--xl-green); border-right:2px solid var(--xl-green); box-shadow:0 0 22px rgba(16,124,65,.45); transition:left .6s cubic-bezier(.3,.9,.3,1), width .6s cubic-bezier(.3,.9,.3,1); animation:xlGlow 2s ease-in-out infinite;}
+  @keyframes xlGlow{0%,100%{background:rgba(16,124,65,.08);} 50%{background:rgba(16,124,65,.18);}}
+  .xl-tabs{display:flex; align-items:center; gap:14px; background:#f3f3f3; border-top:1px solid #d4d4d4; padding:0 12px; font-size:12px; font-family:"Segoe UI",system-ui,sans-serif; color:#555; height:32px;}
+  .xl-tabs .tab{background:#fff; border:1px solid #d4d4d4; border-top:none; border-bottom:3px solid var(--xl-green); padding:6px 16px; color:#0b5a2f; font-weight:600;}
+  .xl-tabs .st{margin-left:auto;}
+  .mc-legend{display:flex; flex-wrap:wrap; gap:8px 18px; margin:12px 2px 0; font-size:12px; color:var(--text-dim);}
+  .mc-legend i{display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:6px; vertical-align:-2px; border:1px solid rgba(255,255,255,.2);}
+
+  /* gráficos estilo Excel */
+  .mc-charts{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  @media(max-width:1000px){.mc-charts{grid-template-columns:1fr;}}
+  .mc-chart{background:#fff; border-radius:12px; border:1px solid #2b3447; padding:10px 10px 6px; position:relative; box-shadow:0 12px 34px rgba(0,0,0,.35);}
+  .mc-chart svg{width:100%; height:auto; display:block; font-family:"Aptos Narrow",Calibri,"Segoe UI",Arial,sans-serif; overflow:visible;}
+  .mc-chart .ln{fill:none; stroke-width:3; stroke-linecap:round; stroke-linejoin:round; transition:stroke-dashoffset 1.5s cubic-bezier(.4,0,.2,1);}
+  .mc-chart .pt{transform-box:fill-box; transform-origin:center; opacity:0; transform:scale(.1); transition:opacity .4s, transform .5s cubic-bezier(.2,1.6,.4,1);}
+  .mc-chart.go .pt{opacity:1; transform:none;}
+  .mc-chart .mk{transition:transform .55s cubic-bezier(.3,.9,.3,1);}
+  .mc-chart .pt.hi{transform:scale(1.55);}
+  .mc-tip{position:absolute; pointer-events:none; background:#1f2937; color:#fff; font:12px/1.35 "Segoe UI",system-ui,sans-serif; padding:7px 10px; border-radius:7px; opacity:0; transition:opacity .15s; z-index:5; white-space:nowrap; transform:translate(-50%,-112%);}
+  .mc-tip.on{opacity:1;}
+  @media(max-width:600px){.xl-tabs .st{display:none;} .xl-name{width:64px;}}
+  @media (prefers-reduced-motion: reduce){.xl-play{animation:none;} .mc-chip{animation:none;}}
 </style>
 <noscript><style>.acc-panel{grid-template-rows:1fr !important;visibility:visible !important;}</style></noscript>
 </head>
@@ -534,6 +677,7 @@
       <a href="#especiales">Especiales</a>
       <a href="#planificacion">Excel</a>
       <a href="#fuerza">Fuerza</a>
+      <a href="#macrociclo">Macrociclo</a>
       <a href="#calculadora">Calculadora</a>
     </div>
   </div>
@@ -969,6 +1113,57 @@
 </section>
 
   <!-- CALCULADORA -->
+<section id="macrociclo" class="acc acc-l1">
+  <button class="acc-head" type="button" aria-expanded="false" aria-controls="macrociclo-p"><span class="acc-num">G</span><span class="acc-ttl"><b>Macrociclo de fuerza · planificación ATR</b><em>Réplica interactiva del Excel · 9 microciclos · 3 mesociclos · gráficos animados</em></span><span class="acc-chev" aria-hidden="true"></span></button>
+  <div class="acc-panel" id="macrociclo-p" role="region" aria-labelledby="macrociclo"><div class="acc-in"><div class="acc-body">
+    <p class="acc-lead">Réplica interactiva del Excel <b>macrociclo.xlsx</b>: la planificación ATR de tres meses con sus microciclos, componentes de fuerza e hipertrofia, flexibilidad y neuromotor, y los gráficos de intensidad y volumen. Toca cualquier celda, elige un microciclo o pulsa el botón de recorrido.</p>
+    <div class="mc-actions">
+      <a class="hero-btn" href="https://profesoresuniajcedu-my.sharepoint.com/:x:/g/personal/sruizv_estudiante_uniajc_edu_co/IQCxTq5dS1pzTadfjyrTD6XnAZZK8MVcu82Q3_zuhRYNoz0?e=q2nhHg" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3h7v7M21 3l-9 9M19 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h5"/></svg>Abrir el Excel original</a>
+    </div>
+    <div class="mc" id="mc">
+      <div class="mc-goal" id="mcGoal"></div>
+      <div class="mc-kpis" id="mcKpis"></div>
+      <div class="mc-objs" id="mcObjs"></div>
+      <div class="mc-hitos" id="mcHitos"></div>
+
+      <h4 class="mc-h">Recorrido del macrociclo <small>elige un microciclo o pulsa ▶</small></h4>
+      <div class="mc-trip" id="mcTrip">
+        <div class="mc-tl-top"><span>Tres meses · tres mesociclos · nueve microciclos numerados</span><button class="fz-btn play" id="mcPlayBtn" type="button" aria-pressed="false">▶ Recorrer el macrociclo</button></div>
+        <div class="mc-bands"><div class="mc-band Y">Octubre · Acumulación</div><div class="mc-band G">Noviembre · Transformación</div><div class="mc-band R">Diciembre · Realización</div></div>
+        <div class="mc-slots" id="mcSlots"></div>
+        <div class="mc-ficha" id="mcFicha"></div>
+      </div>
+
+      <h4 class="mc-h">La hoja de Excel, interactiva <small>toca una celda · flechas del teclado para moverte</small></h4>
+      <div class="mc-jump" id="mcJump">
+        <button type="button" data-r1="1" data-r2="7">Encabezado y objetivos</button>
+        <button type="button" data-r1="8" data-r2="18">Calendario</button>
+        <button type="button" data-r1="20" data-r2="33">Capacidades y métodos</button>
+        <button type="button" data-r1="35" data-r2="46">Fuerza e hipertrofia</button>
+        <button type="button" data-r1="48" data-r2="58">Flexibilidad y neuromotor</button>
+      </div>
+      <div class="xl" id="mcXl">
+        <div class="xl-title"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 8l8 8M16 8l-8 8"/></svg><span>macrociclo.xlsx</span><span>Vista de solo lectura</span></div>
+        <div class="xl-fbar"><div class="xl-name" id="mcName">A1</div><div class="xl-fx">fx</div><div class="xl-fval" id="mcFval"></div></div>
+        <div class="xl-scroll" id="mcScroll" tabindex="0" aria-label="Hoja Macrociclo. Usa las flechas para moverte entre celdas.">
+          <div class="xl-inner"><table class="xl-t" id="mcTable"></table><div class="xl-play" id="mcPlay"></div></div>
+        </div>
+        <div class="xl-tabs"><span class="tab">Macrociclo</span><span class="st">Listo · 58 filas × 13 columnas</span></div>
+      </div>
+      <div class="mc-legend">
+        <span><i style="background:#ffff00"></i>Octubre · Acumulación</span>
+        <span><i style="background:#92d050"></i>Noviembre · Transformación</span>
+        <span><i style="background:#ff0000"></i>Diciembre · Realización</span>
+        <span><b style="color:var(--text)">x</b> = componente trabajado en ese microciclo</span>
+        <span>Las columnas L y M del Excel no tienen datos</span>
+      </div>
+
+      <h4 class="mc-h">Gráficos de intensidad y volumen <small>los mismos tres gráficos del Excel</small></h4>
+      <div class="mc-charts" id="mcCharts"></div>
+    </div>
+  </div></div></div>
+</section>
+
 <section id="calculadora" class="acc acc-l1">
   <button class="acc-head" type="button" aria-expanded="false" aria-controls="calculadora-p"><span class="acc-num">fx</span><span class="acc-ttl"><b>Calculadora de plan por especialidad</b><em>Genera repeticiones, ritmos y pausas según tu especialidad</em></span><span class="acc-chev" aria-hidden="true"></span></button>
   <div class="acc-panel" id="calculadora-p" role="region" aria-labelledby="calculadora"><div class="acc-in"><div class="acc-body">
@@ -1946,6 +2141,342 @@ Array.prototype.forEach.call(document.querySelectorAll('.fz-yt'),function(box){
   box.addEventListener('click',play);
   box.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();play();}});
 });
+})();
+
+</script>
+<script>
+(function(){
+"use strict";
+var D={"cells":[{"r":1,"c":1,"rs":1,"cs":13,"t":"MACROCICLO - PLANIFICACIÓN ATR ADAPTADA CON ENFOQUE A LA ACTIVIDAD DEPORTIVA ORIENTADA A LA SALUD","k":"s","f":"","b":1,"bd":1,"h":"c","v":"b"},{"r":2,"c":1,"rs":1,"cs":2,"t":"Entrenador","k":"s","f":"L","b":1,"bd":1,"h":"l","v":"b"},{"r":2,"c":3,"rs":1,"cs":11,"t":"Sneyder Ruiz","k":"s","f":"","b":1,"bd":1,"h":"l","v":"b"},{"r":3,"c":1,"rs":1,"cs":2,"t":"Objetivo general","k":"s","f":"L","b":1,"bd":1,"h":"l","v":"b"},{"r":3,"c":3,"rs":1,"cs":11,"t":"Aumentar la resistencia cardiorrespiratoria y la fuerza funcional del core y tren inferior, garantizando el control de la presión intraabdominal, para mejorar la autonomía en actividades de la vida diaria de la usuaria en un periodo de 3 meses","k":"s","f":"","b":1,"bd":1,"h":"l","v":"b"},{"r":4,"c":1,"rs":3,"cs":2,"t":"Objetivos específicos","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":4,"c":3,"rs":1,"cs":1,"t":"1","k":"n","f":"L","b":0,"bd":1,"h":"r","v":"b"},{"r":4,"c":4,"rs":1,"cs":10,"t":"Desarrollar progresivamente la resistencia aeróbica y las capacidades neuromotoras (equilibrio y coordinación) a lo largo de las fases de acumulación, transformación y realización, transitando desde esfuerzos continuos y suaves hasta actividades funcionales que mejoren su autonomía física.","k":"s","f":"","b":1,"bd":1,"h":"l","v":"b"},{"r":5,"c":3,"rs":1,"cs":1,"t":"2","k":"n","f":"L","b":0,"bd":1,"h":"r","v":"b"},{"r":5,"c":4,"rs":1,"cs":10,"t":"Aumentar la fuerza funcional del tren inferior y el core mediante una progresión estructurada de volumen e intensidad durante los 3 meses, garantizando la automatización del patrón respiratorio y el control de la presión intraabdominal en todo momento.","k":"s","f":"","b":1,"bd":1,"h":"l","v":"b"},{"r":6,"c":3,"rs":1,"cs":1,"t":"3","k":"n","f":"L","b":0,"bd":1,"h":"r","v":"b"},{"r":6,"c":4,"rs":1,"cs":10,"t":"Consolidar la autoconfianza y la adherencia de la usuaria hacia el ejercicio físico al finalizar el macrociclo ATR, evaluando los cambios positivos en su salud, la reducción del estrés y la facilidad para ejecutar las actividades de la vida diaria sin dolor ni restricciones","k":"s","f":"","b":1,"bd":1,"h":"l","v":"b"},{"r":7,"c":1,"rs":1,"cs":2,"t":"Características generales del macrociclo Principios FIIT - VP","k":"s","f":"","b":1,"bd":1,"h":"c","v":"m"},{"r":7,"c":3,"rs":1,"cs":1,"t":"Frecuencia","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":7,"c":4,"rs":1,"cs":1,"t":"4 días x semana","k":"s","f":"","b":1,"bd":1,"h":"c","v":"m"},{"r":7,"c":5,"rs":1,"cs":1,"t":"Intensidad","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":7,"c":6,"rs":1,"cs":1,"t":"A determinar por microciclo y sesiones","k":"s","f":"","b":1,"bd":1,"h":"c","v":"m"},{"r":7,"c":7,"rs":1,"cs":1,"t":"Tiempo","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":7,"c":8,"rs":1,"cs":1,"t":"90 minutos","k":"s","f":"","b":1,"bd":1,"h":"c","v":"m"},{"r":7,"c":9,"rs":1,"cs":1,"t":"Tipo","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":7,"c":10,"rs":1,"cs":1,"t":"","k":"e","f":"","b":1,"bd":1,"h":"c","v":"m"},{"r":7,"c":11,"rs":1,"cs":1,"t":"A determinar por microciclos","k":"s","f":"","b":1,"bd":1,"h":"c","v":"m"},{"r":7,"c":12,"rs":1,"cs":1,"t":"Progresión","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":7,"c":13,"rs":1,"cs":1,"t":"A determinar por microciclos","k":"s","f":"","b":1,"bd":1,"h":"c","v":"m"},{"r":8,"c":1,"rs":1,"cs":2,"t":"MESES","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":8,"c":3,"rs":1,"cs":3,"t":"Octubre","k":"s","f":"Y","b":0,"bd":1,"h":"c","v":"m"},{"r":8,"c":6,"rs":1,"cs":5,"t":"Noviembre","k":"s","f":"G","b":0,"bd":1,"h":"c","v":"m"},{"r":8,"c":11,"rs":1,"cs":3,"t":"Diciembre","k":"s","f":"R","b":0,"bd":1,"h":"c","v":"m"},{"r":9,"c":1,"rs":1,"cs":2,"t":"Macrociclos","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":9,"c":3,"rs":1,"cs":3,"t":"1","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":9,"c":6,"rs":1,"cs":5,"t":"2","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":9,"c":11,"rs":1,"cs":3,"t":"3","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":10,"c":1,"rs":1,"cs":2,"t":"Mesociclos","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":10,"c":3,"rs":1,"cs":3,"t":"Acumulación","k":"s","f":"Y","b":0,"bd":1,"h":"c","v":"m"},{"r":10,"c":6,"rs":1,"cs":5,"t":"Transformación","k":"s","f":"G","b":0,"bd":1,"h":"c","v":"m"},{"r":10,"c":11,"rs":1,"cs":3,"t":"Realización","k":"s","f":"R","b":0,"bd":1,"h":"c","v":"m"},{"r":11,"c":1,"rs":1,"cs":2,"t":"Número de microciclos","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":11,"c":3,"rs":1,"cs":1,"t":"1","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":11,"c":4,"rs":1,"cs":1,"t":"2","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":11,"c":5,"rs":1,"cs":1,"t":"3","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":11,"c":6,"rs":1,"cs":1,"t":"4","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":11,"c":7,"rs":1,"cs":1,"t":"5","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":11,"c":8,"rs":1,"cs":1,"t":"6","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":11,"c":9,"rs":1,"cs":1,"t":"7","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":11,"c":10,"rs":1,"cs":1,"t":"8","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":11,"c":11,"rs":1,"cs":1,"t":"9","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":11,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":11,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":12,"c":1,"rs":1,"cs":2,"t":"Tipos de microciclos","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":12,"c":3,"rs":1,"cs":1,"t":"Ajuste","k":"s","f":"Y","b":0,"bd":1,"h":"c","v":"m"},{"r":12,"c":4,"rs":1,"cs":1,"t":"Ajuste","k":"s","f":"Y","b":0,"bd":1,"h":"c","v":"m"},{"r":12,"c":5,"rs":1,"cs":1,"t":"Carga","k":"s","f":"Y","b":0,"bd":1,"h":"c","v":"m"},{"r":12,"c":6,"rs":1,"cs":1,"t":"Carga","k":"s","f":"G","b":0,"bd":1,"h":"c","v":"m"},{"r":12,"c":7,"rs":1,"cs":1,"t":"Recuperación","k":"s","f":"G","b":0,"bd":1,"h":"c","v":"m"},{"r":12,"c":8,"rs":1,"cs":1,"t":"Carga","k":"s","f":"G","b":0,"bd":1,"h":"c","v":"m"},{"r":12,"c":9,"rs":1,"cs":1,"t":"Carga","k":"s","f":"G","b":0,"bd":1,"h":"c","v":"m"},{"r":12,"c":10,"rs":1,"cs":1,"t":"Recuperación","k":"s","f":"G","b":0,"bd":1,"h":"c","v":"m"},{"r":12,"c":11,"rs":1,"cs":1,"t":"Carga","k":"s","f":"R","b":0,"bd":1,"h":"c","v":"m"},{"r":12,"c":12,"rs":1,"cs":1,"t":"Carga","k":"s","f":"R","b":0,"bd":1,"h":"c","v":"m"},{"r":12,"c":13,"rs":1,"cs":1,"t":"Carga","k":"s","f":"R","b":0,"bd":1,"h":"c","v":"m"},{"r":13,"c":1,"rs":1,"cs":2,"t":"Fecha de inicio y final del micro","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":13,"c":3,"rs":1,"cs":1,"t":"5 al 11","k":"s","f":"Y","b":0,"bd":1,"h":"c","v":"m"},{"r":13,"c":4,"rs":1,"cs":1,"t":"12 al 18","k":"s","f":"Y","b":0,"bd":1,"h":"c","v":"m"},{"r":13,"c":5,"rs":1,"cs":1,"t":"19 al 25","k":"s","f":"Y","b":0,"bd":1,"h":"c","v":"m"},{"r":13,"c":6,"rs":1,"cs":1,"t":"26 al 1","k":"s","f":"G","b":0,"bd":1,"h":"c","v":"m"},{"r":13,"c":7,"rs":1,"cs":1,"t":"2 al 8","k":"s","f":"G","b":0,"bd":1,"h":"c","v":"m"},{"r":13,"c":8,"rs":1,"cs":1,"t":"9 al 15","k":"s","f":"G","b":0,"bd":1,"h":"c","v":"m"},{"r":13,"c":9,"rs":1,"cs":1,"t":"16 al 22","k":"s","f":"G","b":0,"bd":1,"h":"c","v":"m"},{"r":13,"c":10,"rs":1,"cs":1,"t":"23 al 29","k":"s","f":"G","b":0,"bd":1,"h":"c","v":"m"},{"r":13,"c":11,"rs":1,"cs":1,"t":"30 al 6","k":"s","f":"R","b":0,"bd":1,"h":"c","v":"m"},{"r":13,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":0,"bd":1,"h":"c","v":"m"},{"r":13,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":0,"bd":1,"h":"c","v":"m"},{"r":14,"c":1,"rs":1,"cs":2,"t":"Días por microciclo","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":14,"c":3,"rs":1,"cs":1,"t":"7","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":14,"c":4,"rs":1,"cs":1,"t":"7","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":14,"c":5,"rs":1,"cs":1,"t":"7","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":14,"c":6,"rs":1,"cs":1,"t":"7","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":14,"c":7,"rs":1,"cs":1,"t":"7","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":14,"c":8,"rs":1,"cs":1,"t":"7","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":14,"c":9,"rs":1,"cs":1,"t":"7","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":14,"c":10,"rs":1,"cs":1,"t":"7","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":14,"c":11,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":14,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":14,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":15,"c":1,"rs":1,"cs":2,"t":"Sesiones por microciclos","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":15,"c":3,"rs":1,"cs":1,"t":"3","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":15,"c":4,"rs":1,"cs":1,"t":"4","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":15,"c":5,"rs":1,"cs":1,"t":"4","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":15,"c":6,"rs":1,"cs":1,"t":"4","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":15,"c":7,"rs":1,"cs":1,"t":"3","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":15,"c":8,"rs":1,"cs":1,"t":"4","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":15,"c":9,"rs":1,"cs":1,"t":"3","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":15,"c":10,"rs":1,"cs":1,"t":"4","k":"n","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":15,"c":11,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":15,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":15,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":16,"c":1,"rs":1,"cs":2,"t":"Valoración de la salud y forma física","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":16,"c":3,"rs":1,"cs":1,"t":"24-sep","k":"d","f":"","b":0,"bd":1,"h":"c","v":"m","full":"24/09/2026"},{"r":16,"c":4,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":16,"c":5,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":16,"c":6,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":16,"c":7,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":16,"c":8,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":16,"c":9,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":16,"c":10,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":16,"c":11,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":16,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":16,"c":13,"rs":1,"cs":1,"t":"25-nov","k":"d","f":"","b":0,"bd":1,"h":"c","v":"m","full":"25/11/2026"},{"r":17,"c":1,"rs":1,"cs":2,"t":"Diligenciamiento de anamnesis","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":17,"c":3,"rs":1,"cs":1,"t":"23-sep","k":"d","f":"","b":0,"bd":1,"h":"c","v":"m","full":"23/09/2026"},{"r":17,"c":4,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":17,"c":5,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":17,"c":6,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":17,"c":7,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":17,"c":8,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":17,"c":9,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":17,"c":10,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":17,"c":11,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":17,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":17,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":18,"c":1,"rs":1,"cs":2,"t":"Objetivo de supercompensación","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":18,"c":3,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":18,"c":4,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":18,"c":5,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":18,"c":6,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":18,"c":7,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":18,"c":8,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":18,"c":9,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":18,"c":10,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":18,"c":11,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":18,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":18,"c":13,"rs":1,"cs":1,"t":"80% al 100%","k":"s","f":"","b":0,"bd":1,"h":"c","v":"m"},{"r":20,"c":1,"rs":1,"cs":2,"t":"Resistencia aeróbica","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":20,"c":3,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":20,"c":4,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":20,"c":5,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":20,"c":6,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":20,"c":7,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":20,"c":8,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":20,"c":9,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":20,"c":10,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":20,"c":11,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":20,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":20,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":21,"c":1,"rs":1,"cs":2,"t":"Resistencia anaeróbica","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":21,"c":3,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":21,"c":4,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":21,"c":5,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":21,"c":6,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":21,"c":7,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":21,"c":8,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":21,"c":9,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":21,"c":10,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":21,"c":11,"rs":1,"cs":1,"t":"x","k":"s","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":21,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":21,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":22,"c":1,"rs":1,"cs":2,"t":"Fuerza","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":22,"c":3,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":22,"c":4,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":22,"c":5,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":22,"c":6,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":22,"c":7,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":22,"c":8,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":22,"c":9,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":22,"c":10,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":22,"c":11,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":22,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":22,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":23,"c":1,"rs":1,"cs":2,"t":"Flexibilidad","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":23,"c":3,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":23,"c":4,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":23,"c":5,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":23,"c":6,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":23,"c":7,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":23,"c":8,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":23,"c":9,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":23,"c":10,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":23,"c":11,"rs":1,"cs":1,"t":"x","k":"s","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":23,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":23,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":24,"c":1,"rs":1,"cs":1,"t":"","k":"e","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":24,"c":2,"rs":1,"cs":1,"t":"","k":"e","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":24,"c":3,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":24,"c":4,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":24,"c":5,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":24,"c":6,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":24,"c":7,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":24,"c":8,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":24,"c":9,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":24,"c":10,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":24,"c":11,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":24,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":24,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":25,"c":1,"rs":1,"cs":2,"t":"Adaptación de gestos técnicos (Movimientos y ejercicios básicos de fuerza)","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":25,"c":3,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":25,"c":4,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":25,"c":5,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":25,"c":6,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":25,"c":7,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":25,"c":8,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":25,"c":9,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":25,"c":10,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":25,"c":11,"rs":1,"cs":1,"t":"x","k":"s","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":25,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":25,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":26,"c":1,"rs":1,"cs":2,"t":"Fundamentos psicológicos","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":26,"c":3,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":26,"c":4,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":26,"c":5,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":26,"c":6,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":26,"c":7,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":26,"c":8,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":26,"c":9,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":26,"c":10,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":26,"c":11,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":26,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":26,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":27,"c":1,"rs":1,"cs":2,"t":"Método de desarrollo continuo extensivo","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":27,"c":3,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":27,"c":4,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":27,"c":5,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":27,"c":6,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":27,"c":7,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":27,"c":8,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":27,"c":9,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":27,"c":10,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":27,"c":11,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":27,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":27,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":28,"c":1,"rs":1,"cs":2,"t":"Método de desarrollo continuo intensivo","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":28,"c":3,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":28,"c":4,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":28,"c":5,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":28,"c":6,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":28,"c":7,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":28,"c":8,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":28,"c":9,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":28,"c":10,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":28,"c":11,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":28,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":28,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":29,"c":1,"rs":1,"cs":2,"t":"Método de desarrollo continuo variable","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":29,"c":3,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":29,"c":4,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":29,"c":5,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":29,"c":6,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":29,"c":7,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":29,"c":8,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":29,"c":9,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":29,"c":10,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":29,"c":11,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":29,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":29,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":30,"c":1,"rs":1,"cs":2,"t":"Entrenamiento de calidad","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":30,"c":3,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":30,"c":4,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":30,"c":5,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":30,"c":6,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":30,"c":7,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":30,"c":8,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":30,"c":9,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":30,"c":10,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":30,"c":11,"rs":1,"cs":1,"t":"x","k":"s","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":30,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":30,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":32,"c":1,"rs":1,"cs":2,"t":"INTENSIDAD","k":"s","f":"B","b":1,"bd":0,"h":"c","v":"b"},{"r":32,"c":3,"rs":1,"cs":1,"t":"1","k":"n","f":"Y","b":0,"bd":1,"h":"r","v":"b"},{"r":32,"c":4,"rs":1,"cs":1,"t":"1","k":"n","f":"Y","b":0,"bd":1,"h":"r","v":"b"},{"r":32,"c":5,"rs":1,"cs":1,"t":"2","k":"n","f":"Y","b":0,"bd":1,"h":"r","v":"b"},{"r":32,"c":6,"rs":1,"cs":1,"t":"2","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":32,"c":7,"rs":1,"cs":1,"t":"2","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":32,"c":8,"rs":1,"cs":1,"t":"4","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":32,"c":9,"rs":1,"cs":1,"t":"3","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":32,"c":10,"rs":1,"cs":1,"t":"4","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":32,"c":11,"rs":1,"cs":1,"t":"3","k":"n","f":"R","b":0,"bd":1,"h":"r","v":"b"},{"r":32,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":0,"bd":1,"h":"l","v":"b"},{"r":32,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":0,"bd":1,"h":"l","v":"b"},{"r":33,"c":1,"rs":1,"cs":2,"t":"VOLUMEN","k":"s","f":"O","b":1,"bd":0,"h":"c","v":"b"},{"r":33,"c":3,"rs":1,"cs":1,"t":"1","k":"n","f":"Y","b":0,"bd":1,"h":"r","v":"b"},{"r":33,"c":4,"rs":1,"cs":1,"t":"2","k":"n","f":"Y","b":0,"bd":1,"h":"r","v":"b"},{"r":33,"c":5,"rs":1,"cs":1,"t":"3","k":"n","f":"Y","b":0,"bd":1,"h":"r","v":"b"},{"r":33,"c":6,"rs":1,"cs":1,"t":"1","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":33,"c":7,"rs":1,"cs":1,"t":"3","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":33,"c":8,"rs":1,"cs":1,"t":"2","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":33,"c":9,"rs":1,"cs":1,"t":"2","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":33,"c":10,"rs":1,"cs":1,"t":"1","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":33,"c":11,"rs":1,"cs":1,"t":"1","k":"n","f":"R","b":0,"bd":1,"h":"r","v":"b"},{"r":33,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":0,"bd":1,"h":"l","v":"b"},{"r":33,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":0,"bd":1,"h":"l","v":"b"},{"r":35,"c":1,"rs":1,"cs":13,"t":"FUERZA E HIPERTROFIA","k":"s","f":"S","b":1,"bd":1,"h":"c","v":"m"},{"r":36,"c":1,"rs":1,"cs":2,"t":"Series tradicionales","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":36,"c":3,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":36,"c":4,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":36,"c":5,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":36,"c":6,"rs":1,"cs":1,"t":"x","k":"s","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":36,"c":7,"rs":1,"cs":1,"t":"x","k":"s","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":36,"c":8,"rs":1,"cs":1,"t":"x","k":"s","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":36,"c":9,"rs":1,"cs":1,"t":"x","k":"s","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":36,"c":10,"rs":1,"cs":1,"t":"x","k":"s","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":36,"c":11,"rs":1,"cs":1,"t":"x","k":"s","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":36,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":36,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"l","v":"b"},{"r":37,"c":1,"rs":1,"cs":2,"t":"Series parciales","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":37,"c":3,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":37,"c":4,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":37,"c":5,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":37,"c":6,"rs":1,"cs":1,"t":"","k":"e","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":37,"c":7,"rs":1,"cs":1,"t":"","k":"e","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":37,"c":8,"rs":1,"cs":1,"t":"","k":"e","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":37,"c":9,"rs":1,"cs":1,"t":"","k":"e","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":37,"c":10,"rs":1,"cs":1,"t":"","k":"e","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":37,"c":11,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":37,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":37,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"l","v":"b"},{"r":38,"c":1,"rs":1,"cs":2,"t":"Fuerza/resistencia","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":38,"c":3,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":38,"c":4,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":38,"c":5,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":38,"c":6,"rs":1,"cs":1,"t":"x","k":"s","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":38,"c":7,"rs":1,"cs":1,"t":"","k":"e","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":38,"c":8,"rs":1,"cs":1,"t":"x","k":"s","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":38,"c":9,"rs":1,"cs":1,"t":"x","k":"s","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":38,"c":10,"rs":1,"cs":1,"t":"","k":"e","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":38,"c":11,"rs":1,"cs":1,"t":"x","k":"s","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":38,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":38,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"l","v":"b"},{"r":39,"c":1,"rs":1,"cs":2,"t":"Series compuestas","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":39,"c":3,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":39,"c":4,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":39,"c":5,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":39,"c":6,"rs":1,"cs":1,"t":"","k":"e","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":39,"c":7,"rs":1,"cs":1,"t":"","k":"e","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":39,"c":8,"rs":1,"cs":1,"t":"","k":"e","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":39,"c":9,"rs":1,"cs":1,"t":"","k":"e","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":39,"c":10,"rs":1,"cs":1,"t":"","k":"e","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":39,"c":11,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":39,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":39,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"l","v":"b"},{"r":40,"c":1,"rs":1,"cs":2,"t":"Isometría funcional","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":40,"c":3,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":40,"c":4,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":40,"c":5,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":40,"c":6,"rs":1,"cs":1,"t":"","k":"e","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":40,"c":7,"rs":1,"cs":1,"t":"","k":"e","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":40,"c":8,"rs":1,"cs":1,"t":"x","k":"s","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":40,"c":9,"rs":1,"cs":1,"t":"x","k":"s","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":40,"c":10,"rs":1,"cs":1,"t":"","k":"e","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":40,"c":11,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":40,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":40,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"l","v":"b"},{"r":41,"c":1,"rs":1,"cs":2,"t":"Combinaciones de ejercicios","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":41,"c":3,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":41,"c":4,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":41,"c":5,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":41,"c":6,"rs":1,"cs":1,"t":"x","k":"s","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":41,"c":7,"rs":1,"cs":1,"t":"x","k":"s","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":41,"c":8,"rs":1,"cs":1,"t":"x","k":"s","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":41,"c":9,"rs":1,"cs":1,"t":"x","k":"s","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":41,"c":10,"rs":1,"cs":1,"t":"x","k":"s","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":41,"c":11,"rs":1,"cs":1,"t":"x","k":"s","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":41,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":41,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"l","v":"b"},{"r":42,"c":1,"rs":1,"cs":2,"t":"Superseries","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":42,"c":3,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":42,"c":4,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":42,"c":5,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":42,"c":6,"rs":1,"cs":1,"t":"","k":"e","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":42,"c":7,"rs":1,"cs":1,"t":"","k":"e","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":42,"c":8,"rs":1,"cs":1,"t":"","k":"e","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":42,"c":9,"rs":1,"cs":1,"t":"","k":"e","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":42,"c":10,"rs":1,"cs":1,"t":"","k":"e","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":42,"c":11,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":42,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":42,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"l","v":"b"},{"r":43,"c":1,"rs":1,"cs":2,"t":"Evaluación","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":43,"c":3,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":43,"c":4,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":43,"c":5,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":43,"c":6,"rs":1,"cs":1,"t":"","k":"e","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":43,"c":7,"rs":1,"cs":1,"t":"","k":"e","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":43,"c":8,"rs":1,"cs":1,"t":"","k":"e","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":43,"c":9,"rs":1,"cs":1,"t":"","k":"e","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":43,"c":10,"rs":1,"cs":1,"t":"","k":"e","f":"g","b":1,"bd":1,"h":"c","v":"m"},{"r":43,"c":11,"rs":1,"cs":1,"t":"x","k":"s","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":43,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":43,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"l","v":"b"},{"r":45,"c":1,"rs":1,"cs":2,"t":"INTENSIDAD","k":"s","f":"B","b":1,"bd":0,"h":"c","v":"b"},{"r":45,"c":3,"rs":1,"cs":1,"t":"1","k":"n","f":"Y","b":0,"bd":1,"h":"r","v":"b"},{"r":45,"c":4,"rs":1,"cs":1,"t":"1","k":"n","f":"Y","b":0,"bd":1,"h":"r","v":"b"},{"r":45,"c":5,"rs":1,"cs":1,"t":"2","k":"n","f":"Y","b":0,"bd":1,"h":"r","v":"b"},{"r":45,"c":6,"rs":1,"cs":1,"t":"2","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":45,"c":7,"rs":1,"cs":1,"t":"2","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":45,"c":8,"rs":1,"cs":1,"t":"4","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":45,"c":9,"rs":1,"cs":1,"t":"3","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":45,"c":10,"rs":1,"cs":1,"t":"4","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":45,"c":11,"rs":1,"cs":1,"t":"3","k":"n","f":"R","b":0,"bd":1,"h":"r","v":"b"},{"r":45,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":0,"bd":1,"h":"l","v":"b"},{"r":45,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":0,"bd":1,"h":"l","v":"b"},{"r":46,"c":1,"rs":1,"cs":2,"t":"VOLUMEN","k":"s","f":"O","b":1,"bd":0,"h":"c","v":"b"},{"r":46,"c":3,"rs":1,"cs":1,"t":"1","k":"n","f":"Y","b":0,"bd":1,"h":"r","v":"b"},{"r":46,"c":4,"rs":1,"cs":1,"t":"2","k":"n","f":"Y","b":0,"bd":1,"h":"r","v":"b"},{"r":46,"c":5,"rs":1,"cs":1,"t":"3","k":"n","f":"Y","b":0,"bd":1,"h":"r","v":"b"},{"r":46,"c":6,"rs":1,"cs":1,"t":"1","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":46,"c":7,"rs":1,"cs":1,"t":"3","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":46,"c":8,"rs":1,"cs":1,"t":"2","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":46,"c":9,"rs":1,"cs":1,"t":"2","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":46,"c":10,"rs":1,"cs":1,"t":"1","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":46,"c":11,"rs":1,"cs":1,"t":"1","k":"n","f":"R","b":0,"bd":1,"h":"r","v":"b"},{"r":46,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":0,"bd":1,"h":"l","v":"b"},{"r":46,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":0,"bd":1,"h":"l","v":"b"},{"r":48,"c":1,"rs":1,"cs":13,"t":"FLEXIBILIDAD Y COMPONENTE NEUROMOTOR","k":"s","f":"S","b":1,"bd":1,"h":"c","v":"m"},{"r":49,"c":1,"rs":1,"cs":2,"t":"Movilidad articular","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":49,"c":3,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":49,"c":4,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":49,"c":5,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":49,"c":6,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":49,"c":7,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":49,"c":8,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":49,"c":9,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":49,"c":10,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":49,"c":11,"rs":1,"cs":1,"t":"x","k":"s","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":49,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":49,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"l","v":"b"},{"r":50,"c":1,"rs":1,"cs":2,"t":"Estiramientos dinámicos","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":50,"c":3,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":50,"c":4,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":50,"c":5,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":50,"c":6,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":50,"c":7,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":50,"c":8,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":50,"c":9,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":50,"c":10,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":50,"c":11,"rs":1,"cs":1,"t":"x","k":"s","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":50,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":50,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"l","v":"b"},{"r":51,"c":1,"rs":1,"cs":2,"t":"Estiramientos estáticos (métodos pasivos)","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":51,"c":3,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":51,"c":4,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":51,"c":5,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":51,"c":6,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":51,"c":7,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":51,"c":8,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":51,"c":9,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":51,"c":10,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":51,"c":11,"rs":1,"cs":1,"t":"x","k":"s","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":51,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":51,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"l","v":"b"},{"r":52,"c":1,"rs":1,"cs":2,"t":"Propiocepción básica","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":52,"c":3,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":52,"c":4,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":52,"c":5,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":52,"c":6,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":52,"c":7,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":52,"c":8,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":52,"c":9,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":52,"c":10,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":52,"c":11,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":52,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":52,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"l","v":"b"},{"r":53,"c":1,"rs":1,"cs":2,"t":"Propiocepción avanzada","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":53,"c":3,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":53,"c":4,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":53,"c":5,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":53,"c":6,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":53,"c":7,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":53,"c":8,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":53,"c":9,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":53,"c":10,"rs":1,"cs":1,"t":"x","k":"s","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":53,"c":11,"rs":1,"cs":1,"t":"x","k":"s","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":53,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":53,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"l","v":"b"},{"r":54,"c":1,"rs":1,"cs":2,"t":"Movilidad regenerativa","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":54,"c":3,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":54,"c":4,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":54,"c":5,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":54,"c":6,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":54,"c":7,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":54,"c":8,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":54,"c":9,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":54,"c":10,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":54,"c":11,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":54,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":54,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"l","v":"b"},{"r":55,"c":1,"rs":1,"cs":2,"t":"Evaluación","k":"s","f":"L","b":1,"bd":1,"h":"c","v":"m"},{"r":55,"c":3,"rs":1,"cs":1,"t":"x","k":"s","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":55,"c":4,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":55,"c":5,"rs":1,"cs":1,"t":"","k":"e","f":"Y","b":1,"bd":1,"h":"c","v":"m"},{"r":55,"c":6,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":55,"c":7,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":55,"c":8,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":55,"c":9,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":55,"c":10,"rs":1,"cs":1,"t":"","k":"e","f":"G","b":1,"bd":1,"h":"c","v":"m"},{"r":55,"c":11,"rs":1,"cs":1,"t":"x","k":"s","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":55,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"c","v":"m"},{"r":55,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":1,"bd":1,"h":"l","v":"b"},{"r":57,"c":1,"rs":1,"cs":2,"t":"INTENSIDAD","k":"s","f":"B","b":1,"bd":0,"h":"c","v":"b"},{"r":57,"c":3,"rs":1,"cs":1,"t":"1","k":"n","f":"Y","b":0,"bd":1,"h":"r","v":"b"},{"r":57,"c":4,"rs":1,"cs":1,"t":"1","k":"n","f":"Y","b":0,"bd":1,"h":"r","v":"b"},{"r":57,"c":5,"rs":1,"cs":1,"t":"2","k":"n","f":"Y","b":0,"bd":1,"h":"r","v":"b"},{"r":57,"c":6,"rs":1,"cs":1,"t":"2","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":57,"c":7,"rs":1,"cs":1,"t":"1","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":57,"c":8,"rs":1,"cs":1,"t":"2","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":57,"c":9,"rs":1,"cs":1,"t":"3","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":57,"c":10,"rs":1,"cs":1,"t":"2","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":57,"c":11,"rs":1,"cs":1,"t":"1","k":"n","f":"R","b":0,"bd":1,"h":"r","v":"b"},{"r":57,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":0,"bd":1,"h":"l","v":"b"},{"r":57,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":0,"bd":1,"h":"l","v":"b"},{"r":58,"c":1,"rs":1,"cs":2,"t":"VOLUMEN","k":"s","f":"O","b":1,"bd":0,"h":"c","v":"b"},{"r":58,"c":3,"rs":1,"cs":1,"t":"1","k":"n","f":"Y","b":0,"bd":1,"h":"r","v":"b"},{"r":58,"c":4,"rs":1,"cs":1,"t":"2","k":"n","f":"Y","b":0,"bd":1,"h":"r","v":"b"},{"r":58,"c":5,"rs":1,"cs":1,"t":"3","k":"n","f":"Y","b":0,"bd":1,"h":"r","v":"b"},{"r":58,"c":6,"rs":1,"cs":1,"t":"2","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":58,"c":7,"rs":1,"cs":1,"t":"3","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":58,"c":8,"rs":1,"cs":1,"t":"1","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":58,"c":9,"rs":1,"cs":1,"t":"2","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":58,"c":10,"rs":1,"cs":1,"t":"1","k":"n","f":"G","b":0,"bd":1,"h":"r","v":"b"},{"r":58,"c":11,"rs":1,"cs":1,"t":"1","k":"n","f":"R","b":0,"bd":1,"h":"r","v":"b"},{"r":58,"c":12,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":0,"bd":1,"h":"l","v":"b"},{"r":58,"c":13,"rs":1,"cs":1,"t":"","k":"e","f":"R","b":0,"bd":1,"h":"l","v":"b"}],"rowh":{"3":44.4,"4":44.4,"5":44.4,"6":44.4,"7":44.4,"25":40.2,"27":25.8,"28":30.0,"29":31.2,"51":34.2}};
+var $=function(s,r){return (r||document).querySelector(s);};
+var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));};
+var reduce=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+var HAS_IO='IntersectionObserver' in window;
+var clamp=function(v,a,b){return Math.max(a,Math.min(b,v));};
+var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
+function onVisible(el,cb,th){
+  if(!HAS_IO){cb();return;}
+  var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();cb();}},{threshold:th||.1});
+  io.observe(el);
+}
+
+/* ---------- acceso a los datos ---------- */
+var COLN=['A','B','C','D','E','F','G','H','I','J','K','L','M'];
+var cm={};D.cells.forEach(function(c){cm[c.r+','+c.c]=c;});
+var T=function(r,c){var x=cm[r+','+c];return x?x.t:'';};
+var isX=function(r,c){return T(r,c).toLowerCase()==='x';};
+var N=function(r,c){var v=parseFloat(T(r,c));return isNaN(v)?null:v;};
+var MES={Y:'Octubre',G:'Noviembre',R:'Diciembre'};
+var MESO={Y:'Acumulación',G:'Transformación',R:'Realización'};
+var SC={Y:'#ffe94d',G:'#92d050',R:'#ff5a4d'};
+/* fills por columna tomados de la fila 12 (tipos de microciclo) */
+function mesKey(col){var c=cm['12,'+col];return c&&c.f?c.f:(col<=5?'Y':col<=10?'G':'R');}
+var FECHAS_BASE=new Date(2026,9,5); /* 5 de octubre de 2026: primera fecha del plan (C13) */
+var MON=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+function rango(i){ /* i = 1..9 */
+  var a=new Date(FECHAS_BASE.getTime()+(i-1)*7*864e5),b=new Date(a.getTime()+6*864e5);
+  return a.getDate()+' '+MON[a.getMonth()]+' – '+b.getDate()+' '+MON[b.getMonth()];
+}
+var GROUPS=[
+  {t:'Capacidades',cls:'g1',rows:[20,21,22,23]},
+  {t:'Contenidos y métodos',cls:'g2',rows:[25,26,27,28,29,30]},
+  {t:'Fuerza e hipertrofia',cls:'g3',rows:[36,37,38,39,40,41,42,43]},
+  {t:'Flexibilidad y neuromotor',cls:'g4',rows:[49,50,51,52,53,54,55]}
+];
+var BLOCKS=[
+  {name:'General',int:32,vol:33,title:'Intensidad y volumen · general'},
+  {name:'Fuerza e hipertrofia',int:45,vol:46,title:'Fuerza e Hipertrofia'},
+  {name:'Flexibilidad y neuromotor',int:57,vol:58,title:'Flexibilidad y Neuromotor'}
+];
+var cur=1,state={playing:false,timer:null,visible:false};
+
+/* ---------- resumen: objetivo, KPIs, objetivos, hitos ---------- */
+(function summary(){
+  var goal=$('#mcGoal');if(!goal)return;
+  goal.innerHTML='<small>OBJETIVO GENERAL</small><p>'+esc(T(3,3))+'</p>';
+  var freq=parseInt(T(7,4),10)||0,mins=parseInt(T(7,8),10)||0;
+  var micros=0,ses=0,c;
+  for(c=3;c<=13;c++){if(T(11,c)!=='')micros++;var sv=N(15,c);if(sv)ses+=sv;}
+  var K=[[freq,'días / semana','Frecuencia: '+T(7,4)],[mins,'minutos','Tiempo por sesión: '+T(7,8)],[micros,'microciclos','Numerados en el plan (3 meses)'],[ses,'sesiones','Planificadas en los microciclos 1 a 8']];
+  $('#mcKpis').innerHTML=K.map(function(x){
+    return '<div class="mc-kpi"><b><span data-count="'+x[0]+'">0</span><small>'+x[1]+'</small></b><span>'+esc(x[2])+'</span></div>';
+  }).join('');
+  $('#mcObjs').innerHTML=[4,5,6].map(function(r){
+    return '<div class="mc-obj"><i>'+esc(T(r,3))+'</i><small>OBJETIVO ESPECÍFICO '+esc(T(r,3))+'</small><p>'+esc(T(r,4))+'</p></div>';
+  }).join('');
+  var m16a=cm['16,3'],m16b=cm['16,13'],a17=cm['17,3'];
+  $('#mcHitos').innerHTML=
+    '<div class="mc-hito">'+esc(T(17,1))+'<b>'+esc(a17?a17.t:'')+'</b></div>'+
+    '<div class="mc-hito">'+esc(T(16,1))+'<b>'+esc(m16a?m16a.t:'')+' y '+esc(m16b?m16b.t:'')+'</b></div>'+
+    '<div class="mc-hito">'+esc(T(18,1))+'<b>'+esc(T(18,13))+'</b></div>';
+  onVisible($('#mcKpis'),function(){
+    $$('[data-count]',$('#mcKpis')).forEach(function(el){
+      var to=+el.getAttribute('data-count'),t0=null;
+      if(reduce){el.textContent=to;return;}
+      function step(ts){if(!t0)t0=ts;var p=clamp((ts-t0)/1100,0,1);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step);}
+      requestAnimationFrame(step);
+    });
+  },.3);
+})();
+
+/* ---------- tabla estilo Excel ---------- */
+var table=$('#mcTable'),scroller=$('#mcScroll'),playEl=$('#mcPlay'),xl=$('#mcXl');
+var cover={};var tds=[];
+function rowPx(r){var pt=D.rowh[r];return Math.max(26,Math.round((pt||14.4)*1.5));}
+(function buildTable(){
+  if(!table)return;
+  var covered={};
+  D.cells.forEach(function(c){for(var r=c.r;r<c.r+c.rs;r++)for(var k=c.c;k<c.c+c.cs;k++)if(r!==c.r||k!==c.c)covered[r+','+k]=1;});
+  var W=[46,128,44,84,104,84,112,92,84,56,92,104,84,104];
+  var html='<colgroup>'+W.map(function(w){return '<col style="width:'+w+'px">';}).join('')+'</colgroup>';
+  html+='<thead><tr><th class="corner"></th>'+COLN.map(function(l,i){return '<th class="ch" data-c="'+(i+1)+'" title="Columna '+l+'">'+l+'</th>';}).join('')+'</tr></thead><tbody>';
+  for(var r=1;r<=58;r++){
+    html+='<tr data-r="'+r+'" style="height:'+rowPx(r)+'px;--i:'+r+'"><th class="rh">'+r+'</th>';
+    for(var c=1;c<=13;c++){
+      if(covered[r+','+c])continue;
+      var x=cm[r+','+c];
+      if(!x){html+='<td data-r="'+r+'" data-c="'+c+'"></td>';continue;}
+      var cls=[];
+      if(x.f)cls.push('f-'+x.f);
+      cls.push('h-'+x.h);if(x.v==='m')cls.push('va-m');else if(x.v==='t')cls.push('va-t');
+      if(x.b)cls.push('b');if(x.bd)cls.push('bd');
+      var pop=(x.t.toLowerCase()==='x')||(x.k==='n'&&c>=3&&(r===32||r===33||r===45||r===46||r===57||r===58));
+      if(pop){cls.push('pop');if(x.t.toLowerCase()==='x')cls.push('xk');}
+      var d=((c-3)*70+(r%9)*18);
+      html+='<td data-r="'+r+'" data-c="'+c+'"'+(x.rs>1?' rowspan="'+x.rs+'"':'')+(x.cs>1?' colspan="'+x.cs+'"':'')+' class="'+cls.join(' ')+'"'+(pop?' style="--d:'+d+'ms"':'')+'><span>'+esc(x.t)+'</span></td>';
+    }
+    html+='</tr>';
+  }
+  table.innerHTML=html+'</tbody>';
+  tds=$$('td',table);
+  tds.forEach(function(td){
+    var r=+td.getAttribute('data-r'),c=+td.getAttribute('data-c'),rs=td.rowSpan,cs=td.colSpan;
+    for(var i=r;i<r+rs;i++){cover[i]=cover[i]||{};for(var j=c;j<c+cs;j++)cover[i][j]=td;}
+  });
+  tds.forEach(function(td){
+    if(!td.classList.contains('bd'))return;
+    var r=+td.getAttribute('data-r'),c=+td.getAttribute('data-c');
+    var up=cover[r-1]&&cover[r-1][c],lf=cover[r][c-1];
+    if(!up||!up.classList.contains('bd'))td.classList.add('bt');
+    if(!lf||!lf.classList.contains('bd'))td.classList.add('bl');
+  });
+})();
+
+/* ---------- selección de celda y barra de fórmulas ---------- */
+var active=null,nameBox=$('#mcName'),fval=$('#mcFval');
+function selectTd(td,opts){
+  if(!td)return;
+  if(active)active.classList.remove('act');
+  active=td;td.classList.add('act');
+  var r=+td.getAttribute('data-r'),c=+td.getAttribute('data-c');
+  nameBox.textContent=COLN[c-1]+r;
+  var x=cm[r+','+c];
+  fval.textContent=x?(x.full||x.t):'';
+  $$('tr.rsel',table).forEach(function(tr){tr.classList.remove('rsel');});
+  var tr=td.parentNode;tr.classList.add('rsel');
+  if(!opts||!opts.keepMicro){if(c>=3&&td.colSpan===1&&r>=8)setMicro(c-2,{fromGrid:true,noScroll:true});}
+  if(opts&&opts.ensure)ensureVisible(td);
+}
+function labelW(){var a=$('td[data-c="1"]',table);return a&&getComputedStyle(a).position==='sticky'?46+172:46;}
+function ensureVisible(td){
+  var sc=scroller,hh=26,lw=labelW();
+  var tl=td.offsetLeft,tw=td.offsetWidth,tt=td.offsetTop,th=td.offsetHeight;
+  if(tl<sc.scrollLeft+lw)sc.scrollLeft=Math.max(0,tl-lw);
+  else if(tl+tw>sc.scrollLeft+sc.clientWidth)sc.scrollLeft=tl+tw-sc.clientWidth+4;
+  if(tt<sc.scrollTop+hh)sc.scrollTop=Math.max(0,tt-hh);
+  else if(tt+th>sc.scrollTop+sc.clientHeight)sc.scrollTop=tt+th-sc.clientHeight+4;
+}
+table.addEventListener('click',function(e){
+  var th=e.target.closest('th.ch');
+  if(th){var c=+th.getAttribute('data-c');if(c>=3){stopPlay();setMicro(c-2);}return;}
+  var td=e.target.closest('td');if(td){stopPlay();selectTd(td);}
+});
+scroller.addEventListener('keydown',function(e){
+  if(!active)return;
+  var r=+active.getAttribute('data-r'),c=+active.getAttribute('data-c'),rs=active.rowSpan,cs=active.colSpan,nr=r,nc=c;
+  if(e.key==='ArrowRight')nc=c+cs;else if(e.key==='ArrowLeft')nc=c-1;else if(e.key==='ArrowDown')nr=r+rs;else if(e.key==='ArrowUp')nr=r-1;else return;
+  e.preventDefault();
+  var t=cover[nr]&&cover[nr][nc];
+  if(t){stopPlay();selectTd(t,{ensure:true});}
+});
+
+/* ---------- ir a bloque ---------- */
+$$('#mcJump button').forEach(function(b){
+  b.addEventListener('click',function(){
+    var r1=+b.getAttribute('data-r1'),r2=+b.getAttribute('data-r2');
+    var tr=$('tr[data-r="'+r1+'"]',table);
+    scroller.scrollTo({top:Math.max(0,tr.offsetTop-30),behavior:reduce?'auto':'smooth'});
+    for(var r=r1;r<=r2;r++){var row=$('tr[data-r="'+r+'"]',table);if(row){row.classList.remove('flash');void row.offsetWidth;row.classList.add('flash');}}
+    var first=cover[r1]&&cover[r1][1];if(first)selectTd(first,{keepMicro:true});
+    setTimeout(function(){$$('tr.flash',table).forEach(function(t){t.classList.remove('flash');});},1700);
+  });
+});
+
+/* ---------- recorrido: línea de tiempo ---------- */
+var slotsBox=$('#mcSlots');
+(function buildSlots(){
+  if(!slotsBox)return;
+  var h='';
+  for(var c=3;c<=13;c++){
+    var i=c-2,n=T(11,c),tipo=T(12,c),k=mesKey(c);
+    var empty=n==='';
+    h+='<button class="mc-slot'+(empty?' empty':'')+'" data-i="'+i+'" style="--sc:'+SC[k]+'" aria-label="'+(empty?'Columna sin datos en el Excel':'Microciclo '+n+', '+tipo)+'"><b>'+(empty?'·':esc(n))+'</b><em>'+(empty?'sin datos':esc(tipo.replace('Recuperación','Recup.')))+'</em></button>';
+  }
+  slotsBox.innerHTML=h;
+  slotsBox.addEventListener('click',function(e){var b=e.target.closest('.mc-slot');if(b){stopPlay();setMicro(+b.getAttribute('data-i'));}});
+})();
+
+/* ---------- ficha del microciclo ---------- */
+var fichaEl=$('#mcFicha');
+function ficha(i){
+  var col=i+2,n=T(11,col),empty=n==='',k=mesKey(col),sc=SC[k];
+  var h='<div class="mc-fh" style="--sc:'+sc+'">';
+  if(empty){
+    h+='<div class="big">·<small>columna '+COLN[col-1]+'</small></div><h5>Sin datos en el Excel</h5><div class="sub">Esta columna pertenece al mesociclo de '+MESO[k]+' ('+MES[k]+'), pero la hoja no la numera ni la completa.</div><span class="mc-badge">'+esc(T(12,col))+'</span></div><div class="mc-fb"><div class="mc-none">No hay componentes marcados para esta columna.</div></div>';
+    fichaEl.innerHTML=h;return;
+  }
+  var ses=T(15,col),dias=T(14,col),fech=T(13,col);
+  h+='<div class="big">'+esc(n)+'<small>de 9</small></div>'+
+    '<h5>Microciclo '+esc(n)+' · '+MESO[k]+'</h5>'+
+    '<div class="sub">'+MES[k]+' · semana del '+esc(rango(+n))+'</div>'+
+    '<span class="mc-badge">'+esc(T(12,col)).toUpperCase()+'</span>'+
+    '<div class="mc-facts"><div><span>Fechas (Excel)</span><b>'+esc(fech||'—')+'</b></div><div><span>Días</span><b>'+esc(dias||'—')+'</b></div><div><span>Sesiones</span><b>'+esc(ses||'—')+'</b></div><div><span>Mesociclo</span><b>'+MESO[k]+'</b></div></div></div>';
+  h+='<div class="mc-fb">';
+  GROUPS.forEach(function(g){
+    var on=g.rows.filter(function(r){return isX(r,col);});
+    h+='<div class="mc-grp"><h6>'+g.t.toUpperCase()+' · '+on.length+' DE '+g.rows.length+'</h6><div class="mc-chips">'+
+      (on.length?on.map(function(r,j){return '<span class="mc-chip '+g.cls+'" style="animation-delay:'+(j*60)+'ms">'+esc(T(r,1))+'</span>';}).join(''):'<span class="mc-none">Ninguno en este microciclo</span>')+'</div></div>';
+  });
+  h+='</div><div class="mc-gauges">';
+  BLOCKS.forEach(function(b){
+    var iv=N(b.int,col),vv=N(b.vol,col);
+    function segs(v,max,color){var s='';for(var q=1;q<=max;q++)s+='<i class="'+(v&&q<=v?'on':'')+'" style="--k:'+color+';transition-delay:'+(q*90)+'ms"></i>';return s;}
+    h+='<div class="mc-gauge"><h6>'+b.name+'</h6>'+
+      '<div class="mc-gr"><span>Intensidad</span><div class="segs">'+segs(iv,4,'#3aa6d0')+'</div><b>'+(iv==null?'–':iv)+'</b></div>'+
+      '<div class="mc-gr"><span>Volumen</span><div class="segs">'+segs(vv,3,'#e97132')+'</div><b>'+(vv==null?'–':vv)+'</b></div></div>';
+  });
+  h+='</div><p class="mc-note" style="grid-column:1/-1">Intensidad (1 a 4) y volumen (1 a 3) son los niveles de la escala del Excel; la hoja no define qué significa cada nivel. La semana indicada se calcula desde el 5 de octubre de 2026, primera fecha del plan.</p>';
+  fichaEl.innerHTML=h;
+  /* animar segmentos desde vacío */
+  var segsEls=$$('.segs i.on',fichaEl);segsEls.forEach(function(s){s.classList.remove('on');});
+  requestAnimationFrame(function(){requestAnimationFrame(function(){segsEls.forEach(function(s){s.classList.add('on');});});});
+}
+
+/* ---------- gráficos tipo Excel ---------- */
+var charts=[];
+(function buildCharts(){
+  var host=$('#mcCharts');if(!host)return;
+  BLOCKS.forEach(function(b,bi){
+    var W=520,H=332,m={l:42,r:16,t:60,b:74},pw=W-m.l-m.r,ph=H-m.t-m.b,n=9;
+    var X=function(i){return m.l+pw*(i-0.5)/n;},Y=function(v){return m.t+ph*(1-v/4);};
+    var ints=[],vols=[];for(var i=1;i<=9;i++){ints.push(N(b.int,i+2));vols.push(N(b.vol,i+2));}
+    var card=document.createElement('div');card.className='mc-chart';
+    var s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+esc(b.title)+': intensidad y volumen por microciclo">';
+    s+='<text x="'+(W/2)+'" y="26" text-anchor="middle" font-size="17" fill="#404040" font-weight="600">'+esc(b.title)+'</text>';
+    var bands=[[1,3,'#ffff00','Acumulación'],[4,8,'#92d050','Transformación'],[9,9,'#ff0000','Realización']];
+    bands.forEach(function(bd){
+      var x0=m.l+pw*(bd[0]-1)/n,x1=m.l+pw*bd[1]/n;
+      s+='<rect x="'+x0+'" y="'+m.t+'" width="'+(x1-x0)+'" height="'+ph+'" fill="'+bd[2]+'" opacity=".2"/>';
+      if(bd[1]-bd[0]>=1)s+='<text x="'+((x0+x1)/2)+'" y="'+(m.t-8)+'" text-anchor="middle" font-size="10.5" fill="#7a7a7a">'+bd[3]+'</text>';
+    });
+    for(var g=0;g<=4;g++){
+      s+='<line x1="'+m.l+'" x2="'+(W-m.r)+'" y1="'+Y(g)+'" y2="'+Y(g)+'" stroke="#d9d9d9" stroke-width="1"/>';
+      s+='<text x="'+(m.l-8)+'" y="'+(Y(g)+4)+'" text-anchor="end" font-size="11.5" fill="#595959">'+g+'</text>';
+    }
+    for(var q=1;q<=9;q++)s+='<text x="'+X(q)+'" y="'+(H-m.b+20)+'" text-anchor="middle" font-size="11.5" fill="#595959">'+q+'</text>';
+    s+='<text x="'+(m.l+pw/2)+'" y="'+(H-m.b+36)+'" text-anchor="middle" font-size="11" fill="#7a7a7a">Microciclo</text>';
+    s+='<rect class="mk" id="mk'+bi+'" x="'+(m.l+pw*0/n)+'" y="'+m.t+'" width="'+(pw/n)+'" height="'+ph+'" fill="#107c41" opacity=".13"/>';
+    function path(arr){var d='',st=false;arr.forEach(function(v,i){if(v==null){st=false;return;}d+=(st?'L':'M')+X(i+1)+' '+Y(v);st=true;});return d;}
+    s+='<path class="ln" id="li'+bi+'" d="'+path(ints)+'" stroke="#156082"/>';
+    s+='<path class="ln" id="lv'+bi+'" d="'+path(vols)+'" stroke="#e97132"/>';
+    ints.forEach(function(v,i){if(v!=null)s+='<circle class="pt pi" data-i="'+(i+1)+'" cx="'+X(i+1)+'" cy="'+Y(v)+'" r="5" fill="#156082" stroke="#fff" stroke-width="1.6" style="transition-delay:'+(.5+i*.14)+'s"/>';});
+    vols.forEach(function(v,i){if(v!=null)s+='<circle class="pt pv" data-i="'+(i+1)+'" cx="'+X(i+1)+'" cy="'+Y(v)+'" r="5" fill="#e97132" stroke="#fff" stroke-width="1.6" style="transition-delay:'+(.6+i*.14)+'s"/>';});
+    s+='<g font-size="12.5" fill="#404040"><rect x="'+(W/2-108)+'" y="'+(H-20)+'" width="14" height="4" rx="2" fill="#156082"/><text x="'+(W/2-90)+'" y="'+(H-15)+'">INTENSIDAD</text><rect x="'+(W/2+18)+'" y="'+(H-20)+'" width="14" height="4" rx="2" fill="#e97132"/><text x="'+(W/2+36)+'" y="'+(H-15)+'">VOLUMEN</text></g>';
+    for(var z=1;z<=9;z++)s+='<rect class="hz" data-i="'+z+'" x="'+(m.l+pw*(z-1)/n)+'" y="'+m.t+'" width="'+(pw/n)+'" height="'+ph+'" fill="transparent" style="cursor:pointer"/>';
+    s+='</svg><div class="mc-tip"></div>';
+    card.innerHTML=s;host.appendChild(card);
+    var svg=$('svg',card),tip=$('.mc-tip',card);
+    charts.push({card:card,svg:svg,mk:$('#mk'+bi,card),m:m,pw:pw,n:n,lines:[$('#li'+bi,card),$('#lv'+bi,card)],b:b,ints:ints,vols:vols});
+    $$('.hz',card).forEach(function(z){
+      z.addEventListener('mouseenter',function(){
+        var i=+z.getAttribute('data-i');
+        tip.innerHTML='<b>Microciclo '+i+'</b> · '+esc(T(12,i+2))+'<br>Intensidad: <b>'+(ints[i-1]==null?'–':ints[i-1])+'</b> · Volumen: <b>'+(vols[i-1]==null?'–':vols[i-1])+'</b>';
+        var rc=card.getBoundingClientRect(),sr=svg.getBoundingClientRect(),sx=sr.width/W;
+        tip.style.left=(sr.left-rc.left+X(i)*sx)+'px';
+        tip.style.top=(sr.top-rc.top+Math.min(Y(ints[i-1]||0),Y(vols[i-1]||0))*sx)+'px';
+        tip.classList.add('on');
+      });
+      z.addEventListener('mouseleave',function(){tip.classList.remove('on');});
+      z.addEventListener('click',function(){stopPlay();setMicro(+z.getAttribute('data-i'));});
+    });
+    /* preparar trazo animado */
+    charts[bi].lines.forEach(function(p){var L=p.getTotalLength?p.getTotalLength():600;p.style.strokeDasharray=L;p.style.strokeDashoffset=L;p._L=L;});
+    onVisible(card,function(){
+      card.classList.add('go');
+      charts[bi].lines.forEach(function(p,k){p.style.transitionDelay=(k*.25)+'s';p.style.strokeDashoffset=0;});
+    },.25);
+  });
+})();
+function markCharts(i){
+  charts.forEach(function(ch){
+    ch.mk.style.transform='translateX('+(ch.pw*(Math.min(i,9)-1)/ch.n)+'px)';
+    ch.mk.style.opacity=i>9?0:'';
+    $$('.pt',ch.svg).forEach(function(p){p.classList.toggle('hi',+p.getAttribute('data-i')===i);});
+  });
+}
+
+/* ---------- control central ---------- */
+function placeOverlay(){
+  var th=$('th.ch[data-c="'+(cur+2)+'"]',table);if(!th)return;
+  playEl.style.left=th.offsetLeft+'px';playEl.style.width=th.offsetWidth+'px';playEl.style.height=table.offsetHeight+'px';
+}
+function setMicro(i,opts){
+  opts=opts||{};
+  i=clamp(i,1,11);cur=i;
+  var col=i+2,th=$('th.ch[data-c="'+col+'"]',table);
+  placeOverlay();
+  if(th){$$('th.ch.sel',table).forEach(function(t){t.classList.remove('sel');});th.classList.add('sel');}
+  $$('.mc-slot',slotsBox).forEach(function(b){b.classList.toggle('on',+b.getAttribute('data-i')===i);});
+  ficha(i);markCharts(i);
+  if(!opts.fromGrid){
+    var hd=cover[11]&&cover[11][col];
+    if(hd){if(active)active.classList.remove('act');active=hd;hd.classList.add('act');nameBox.textContent=COLN[col-1]+'11';fval.textContent=T(11,col);
+      $$('tr.rsel',table).forEach(function(tr){tr.classList.remove('rsel');});hd.parentNode.classList.add('rsel');}
+  }
+  if(!opts.noScroll&&th){
+    var sc=scroller,lw=labelW();
+    if(th.offsetLeft<sc.scrollLeft+lw)sc.scrollTo({left:Math.max(0,th.offsetLeft-lw-6),behavior:reduce?'auto':'smooth'});
+    else if(th.offsetLeft+th.offsetWidth>sc.scrollLeft+sc.clientWidth)sc.scrollTo({left:th.offsetLeft+th.offsetWidth-sc.clientWidth+8,behavior:reduce?'auto':'smooth'});
+  }
+}
+var playBtn=$('#mcPlayBtn');
+function startPlay(){
+  if(state.playing)return;state.playing=true;
+  playBtn.innerHTML='⏸ Pausar recorrido';playBtn.setAttribute('aria-pressed','true');
+  if(cur>=9)setMicro(1);
+  state.timer=setInterval(function(){
+    var nx=cur>=9?1:cur+1;
+    setMicro(nx);
+  },2600);
+}
+function stopPlay(){
+  if(!state.playing)return;state.playing=false;clearInterval(state.timer);
+  playBtn.innerHTML='▶ Recorrer el macrociclo';playBtn.setAttribute('aria-pressed','false');
+}
+playBtn.addEventListener('click',function(){state.playing?stopPlay():startPlay();});
+
+/* pausar si el apartado se cierra o sale de pantalla */
+if(HAS_IO){
+  new IntersectionObserver(function(es){state.visible=es[0].isIntersecting;if(!state.visible)stopPlay();},{threshold:.05}).observe($('#mcTrip'));
+}
+/* revelar la hoja */
+onVisible(xl,function(){
+  xl.classList.add('go');
+  setMicro(1,{noScroll:true});
+},.12);
+/* si el apartado estaba cerrado, el ancho de las columnas puede cambiar: reajustar */
+window.addEventListener('resize',placeOverlay);
+setMicro(1,{noScroll:true});
 })();
 
 </script>
